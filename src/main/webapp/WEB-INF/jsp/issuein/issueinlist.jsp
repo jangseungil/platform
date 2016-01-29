@@ -53,6 +53,14 @@
 
 <script type="text/javascript">
 
+	$.ajax({
+		url: "http://localhost:3000/test",
+		dataType : "jsonp"
+	}).success(function(a) {
+		for(var i=0, len=a.no.length; i<len; i++) {
+			console.log(a.no[i]);
+		}
+	});
 	
 </script>
 </html>
