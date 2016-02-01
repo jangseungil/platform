@@ -41,12 +41,7 @@
 				<th>날짜</th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-				<td><a href="/issuein/list"></a></td>
-				<td></td>
-				<td></td>
-			</tr>
+		<tbody id="contensBody">
 		</tbody>
 	</table>
 </div>
@@ -56,9 +51,17 @@
 	$.ajax({
 		url: "http://localhost:3000/test",
 		dataType : "jsonp"
-	}).success(function(a) {
-		for(var i=0, len=a.no.length; i<len; i++) {
-			console.log(a.no[i]);
+	}).success(function(obj) {
+		for(var i=0, len=obj.contents.length; i<len; i++) {
+			console.log(obj.contents[i].no);
+			var contents =  "<tr>" +
+							"	<td><a href'/issuein/list'>"+ obj.contents[i].no +"</a></td>" +
+							"	<td>"+obj.contents[i].title+"</td>" +
+							"	<td>"+obj.contents[i].time+"</td>" +
+							"</tr>";
+			
+			$("#contensBody").append(contents);
+						
 		}
 	});
 	
