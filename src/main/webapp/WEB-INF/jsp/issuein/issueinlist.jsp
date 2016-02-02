@@ -52,12 +52,12 @@
 		url: "http://localhost:3000/test",
 		dataType : "jsonp"
 	}).success(function(obj) {
-		for(var i=0, len=obj.contents.length; i<len; i++) {
-			console.log(obj.contents[i].no);
+		for(var i=0, len=obj.length; i<len; i++) {
+			console.log(obj[i].no);
 			var contents =  "<tr>" +
-							"	<td><a href'/issuein/list'>"+ obj.contents[i].no +"</a></td>" +
-							"	<td>"+obj.contents[i].title+"</td>" +
-							"	<td>"+obj.contents[i].time+"</td>" +
+							"	<td><a href'/issuein/list'>"+ obj[i].no +"</a></td>" +
+							"	<td>"+obj[i].title+"</td>" +
+							"	<td>"+obj[i].time+"</td>" +
 							"</tr>";
 			
 			$("#contensBody").append(contents);
