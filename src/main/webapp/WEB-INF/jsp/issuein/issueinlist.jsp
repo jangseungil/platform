@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="/WEB-INF/jsp/common/common.jsp"/>
-<html ng-app="helloApp">
+<html>
 <head>
 	<title>Test</title>
 </head>
 
-<body ng-controller="CompanyCtrl">
+<body>
 
 <jsp:include page="/WEB-INF/jsp/common/navbar.jsp">
 	<jsp:param name="tab" value="test"/>
 </jsp:include>
 
 
-<div class="panel panel-default">
+<div ng-app="myApp" ng-controller="myCtrl" class="panel panel-default">
 	<!-- Default panel contents -->
 	<div class="panel-heading">사용자목록</div>
 	<div class="panel-body">
@@ -26,7 +26,7 @@
 		</div>
 		<button type="button" class="btn btn-default">Submit</button>
 	</div>
-	
+
 	<!-- Table -->
 	<table class="table">
 		<colgroup>
@@ -41,29 +41,27 @@
 				<th>날짜</th>
 			</tr>
 		</thead>
-		<tbody id="contensBody">
+		<tbody>
+			<tr ng-repeat="content in contents">
+				<td>{{content.no}}</td>
+				<td><a href="{{content.link}}">{{content.title}}</a></td>
+				<td>{{content.time}}</td>
+			</tr>
 		</tbody>
 	</table>
 </div>
 
 <script type="text/javascript">
-
-	$.ajax({
-		url: "http://localhost:3000/test",
-		dataType : "jsonp"
-	}).success(function(obj) {
-		for(var i=0, len=obj.length; i<len; i++) {
-			console.log(obj[i].no);
-			var contents =  "<tr>" +
-							"	<td><a href'/issuein/list'>"+ obj[i].no +"</a></td>" +
-							"	<td>"+obj[i].title+"</td>" +
-							"	<td>"+obj[i].time+"</td>" +
-							"</tr>";
-			
-			$("#contensBody").append(contents);
-						
-		}
-	});
+	//angular.js 이용
+	var app = angular.module("myApp", []);
 	
+	app.controller("myCtrl", function($scope, $http) {
+		$scope.contents = {};
+		
+		$http.jsonp("http://localhost:3000/test?callback=JSON_CALLBACK")
+		.success(function(data) {
+			$scope.contents = data;
+		});
+	});
 </script>
 </html>
