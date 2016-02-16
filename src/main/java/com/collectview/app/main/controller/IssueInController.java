@@ -14,4 +14,10 @@ public class IssueInController {
          
         return "/issuein/issueinlist";
     }
+    
+    @RequestMapping(value="/issuein")
+    public String openSampleBoard(HttpServletRequest request, SampleVo sampleVo) throws Exception{
+    	
+    	return "/issuein/issuein";
+    }
 }

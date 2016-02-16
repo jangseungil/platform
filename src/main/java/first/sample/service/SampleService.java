@@ -11,7 +11,7 @@ import first.sample.vo.SampleVo;
 @Service
 public class SampleService {
 
-	@Autowired
+	//@Autowired
     private SampleDao sampleDao;
      
     public List<SampleVo> selectBoardList(SampleVo sampleVo) throws Exception {
