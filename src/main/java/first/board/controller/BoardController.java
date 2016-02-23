@@ -21,10 +21,9 @@ public class BoardController {
      
     @RequestMapping(value="/board/boardList")
     public String openSampleBoardList(HttpServletRequest request, BoardVo boardVo) throws Exception{
-
+    	
     	List<BoardVo> boardList = boardService.selectBoardList(boardVo);
         request.setAttribute("boardList", boardList);
-        request.setAttribute("boardVo", boardVo);
         
         return "/board/boardList";
     }

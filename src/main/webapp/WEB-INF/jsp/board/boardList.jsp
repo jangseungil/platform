@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="util" uri="http://www.platform.co.kr" %>
 <!DOCTYPE html>
 <jsp:include page="/WEB-INF/jsp/common/common.jsp"/>
 <html>
@@ -59,6 +60,8 @@
 	    </tbody>
 	</table>
 	
+	<util:name firstPageNo="${boardVo.firstPageNo}"/>
+	
 	<jsp:include page="/WEB-INF/jsp/common/paging.jsp" flush="true">
 	    <jsp:param name="firstPageNo" value="${boardVo.firstPageNo}" />
 	    <jsp:param name="prevPageNo" value="${boardVo.prevPageNo}" />
@@ -67,7 +70,7 @@
 	    <jsp:param name="endPageNo" value="${boardVo.endPageNo}" />
 	    <jsp:param name="nextPageNo" value="${boardVo.nextPageNo}" />
 	    <jsp:param name="finalPageNo" value="${boardVo.finalPageNo}" />
-	</jsp:include>
+	</jsp:include> 
 </div>
  
 <form name="board" action="/board/boardList">
