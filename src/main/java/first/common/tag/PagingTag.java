@@ -57,7 +57,7 @@ public class PagingTag extends TagSupport {
 		      out.write("\r\n");
 		      out.write("<div class=\"paginate\">\r\n");
 		      out.write("    <a href=\"javascript:goPage(");
-		      
+		      out.write(firstPageNo);
 		      out.write(")\" class=\"first\">처음페이지</a>\r\n");
 		      out.write("    <a href=\"javascript:goPage(");
 		      
