@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.css">
+
 <link rel="stylesheet" href="/common/bootstrap-3.3.4-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="/common/bootstrap-3.3.4-dist/css/bootstrap-theme.min.css">
 
