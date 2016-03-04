@@ -18,4 +18,11 @@ public class SalaryController {
         return "/calculator/salary";
     }
  
+    
+    @RequestMapping(value="/calculator/salary2")
+    public String salaryList2(HttpServletRequest request, BoardVo boardVo) throws Exception{
+    	
+    	return "/calculator/salary2";
+    }
+    
 }

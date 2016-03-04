@@ -41,190 +41,102 @@
 	<!--header end-->
 	
 	<div class="wrapper">
-		<!-- BASIC FORM ELELEMNTS -->
-		<div class="row mt">
-			<div class="col-lg-2"></div>
-			<div class="col-lg-8">
-					<h4 class="mb">
-						<i class="fa fa-angle-right"> salary calculator</i>
-					</h4>
-					<form class="form-horizontal style-form" method="get">
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">연봉/월급 선택</label>
-							<div class="col-sm-4">
-								<div class="radio-inline">
-								  <label>
-							     	 <input type="radio" name="yearMonthRadios" id="optionsRadios1" value="option1" checked="checked">
-								     연봉
-								  </label>
-								</div>
-								<div class="radio-inline">
-								  <label>
-								    <input type="radio" name="yearMonthRadios" id="optionsRadios2" value="option2">
-								    월급
-								  </label>
-								</div>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">퇴직금</label>
-							<div class="col-sm-4">
-								<div class="radio-inline">
-								  <label>
-							     	 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked">
-								     별도
-								  </label>
-								</div>
-								<div class="radio-inline">
-								  <label>
-								    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-								     포함
-								  </label>
-								</div>
-							</div>
-						</div>
-						
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">연봉</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" placeholder="원">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">비과세액</label>	
-							<div class="col-sm-4">
-								<input class="form-control" id="disabledInput" type="text" value="100,000" disabled="disabled">
-								<label class="checkbox-inline">
-									<input type="checkbox" id="inlineCheckbox1" value="option1">직접입력
-								</label>
-							</div>
-							
-                             
-						
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">부양가족수</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" placeholder="명(본인포함)">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">20세이하 자녀수</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" placeholder="명">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<div class="col-sm-4"></div>
-							<div class="col-sm-4">
-								<button type="button" class="btn btn-primary">계산하기</button>
-								<button type="button" class="btn btn-default">다시하기</button>
-							</div>
-						</div>
-					</form>
-			</div>
-			<div class="col-lg-2"></div>
-		</div>
-		<!-- /row -->
+			<form name="inputFrm">
+			<table border="0" cellpadding="0" cellspacing="0" class="calculator">
+			     <tbody><tr>
+			      <td class="terms">
+			       <div class="terms_title"></div>
+			       <ul>
+			            <li>
+			                <span class="fl">연봉/월급 선택</span>
+			                <span class="fr">
+			                    <input type="radio" id="total_salary" name="salary_type" checked="" onclick="showTr()" value="NaN"><label for="total_salary">연봉</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			                    <input type="radio" id="salary" name="salary_type" onclick="hideTr()" value="NaN"><label for="salary">월급</label>
+			                </span>
+			            </li>
+			            <li>
+			                <span class="fl">퇴직금</span>
+			                <span id="severance_pay_show" class="fr">
+			                    <input type="radio" id="addition" name="severance_pay_yn" checked="" value="NaN"><label for="addition">별도</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			                    <input type="radio" id="include" name="severance_pay_yn" value="NaN"><label for="include">포함</label>
+			                </span>
+			                <span id="severance_pay_hide" style="display:none; padding-top:7px" class="fr">연봉인 경우만 선택</span>
+			            </li>
+			            <li>
+			                <span id="annual" class="fl">연봉</span>
+			                <span id="monthly" class="fl" style="display:none">월급</span>
+			                <span class="fr">
+			                    <input type="text" class="terms_textbox_01" name="pay" maxlength="10" onkeyup="trans_han(this.name,'trans_price');"> 원
+			                    <div class="amount"><span style="color:#7157d3;" id="trans_price"></span>원</div>
+			                </span>
+			            </li>
+			            <li>
+			                <span class="fl">비과세액 <img src="//www.saraminimage.co.kr/guide/job_help/calculator_tip.gif" alt="도움말"></span>
+			                <span class="fr"><input type="text" class="terms_textbox_02" name="tax_free" value="100000" maxlength="10" onkeyup="numChk(this)" disabled=""> 원<div class="enter"><input type="checkbox" id="tax_free_chk" onclick="chkTaxFree()" value="NaN"><label for="tax_free_chk">직접입력</label></div></span>
+			            </li>
+			            <li>
+			                <span class="fl">부양가족수 <img src="//www.saraminimage.co.kr/guide/job_help/calculator_tip.gif" alt="도움말" ></span>
+			                <span class="fr"><input type="text" class="terms_textbox_03" name="dependent" maxlength="2" value="1" onkeyup="dependentChk(this)"> 명<span class="text"> (본인포함)</span>
+			            </span></li>
+			            <li>
+			                <span class="fl">20세이하 자녀수 <img src="//www.saraminimage.co.kr/guide/job_help/calculator_tip.gif" alt="도움말" ></span>
+			                <span class="fr" style="vertical-align:top;"><input type="text" class="terms_textbox_03" name="under_twenty" maxlength="2" value="0" onkeyup="dependentChk(this)"> 명 
+			                </span>
+			            </li>
+			             <li style="background:none;" class="btn">
+			                 <img src="//www.saraminimage.co.kr/buttons/default/btn_sum.gif" alt="계산하기" hspace="5" onmouseover="this.style.cursor='hand';return true;" onclick="salaryCalc()" style="cursor: pointer;">
+			                <img src="//www.saraminimage.co.kr/buttons/default/btn_resum.gif" alt="다시 계산하기" hspace="5" onmouseover="this.style.cursor='hand';return true;" onclick="reseting()" style="cursor: pointer;">
+			            </li>
+			       </ul>
+			      </td>
+			      <td class="calculator_arrow"><img src="//www.saraminimage.co.kr/guide/job_help/arrow.gif"></td>
+			      <td class="receipt">
+			       <div class="receipt_title"></div>
+			       <ul>
+			        <li>
+			            <span class="fl">국민연금 <img src="//www.saraminimage.co.kr/guide/job_help/calculator_tip.gif" alt="도움말" onmouseover="showTip(this, 'calcHelp4');this.style.cursor='hand';return true;" onmouseout="hideTip('calcHelp4');"></span>
+			            <span class="fr"><input type="text" class="receipt_textbox_01" name="national_pension" readonly=""> 원</span>
+			        </li>
+			        <li>
+			            <span class="fl">건강보험 <img src="//www.saraminimage.co.kr/guide/job_help/calculator_tip.gif" alt="도움말" onmouseover="showTip(this, 'calcHelp5');this.style.cursor='hand';return true;" onmouseout="hideTip('calcHelp5');" style="cursor: pointer;"></span>
+			            <span class="fr"><input type="text" class="receipt_textbox_01" name="health_insurance" readonly=""> 원</span>
+			        </li>
+			        <li>
+			            <span class="fl">장기요양 <img src="//www.saraminimage.co.kr/guide/job_help/calculator_tip.gif" alt="도움말" onmouseover="showTip(this, 'calcHelp6');this.style.cursor='hand';return true;" onmouseout="hideTip('calcHelp6');"></span>
+			            <span class="fr"><input type="text" class="receipt_textbox_01" name="longterm_care_insurance" readonly=""> 원</span>
+			        </li>
+			        <li>
+			            <span class="fl">고용보험 <img src="//www.saraminimage.co.kr/guide/job_help/calculator_tip.gif" alt="도움말" onmouseover="showTip(this, 'calcHelp7');this.style.cursor='hand';return true;" onmouseout="hideTip('calcHelp7');" style="cursor: pointer;"></span>
+			            <span class="fr"><input type="text" class="receipt_textbox_01" name="unemployment_insurance" readonly=""> 원</span>
+			        </li>
+			        <li>
+			            <span class="fl">소득세 <img src="//www.saraminimage.co.kr/guide/job_help/calculator_tip.gif" alt="도움말" onmouseover="showTip(this, 'calcHelp8');this.style.cursor='hand';return true;" onmouseout="hideTip('calcHelp8');"></span>
+			            <span class="fr"><input type="text" class="receipt_textbox_01" name="income_tax" readonly=""> 원</span>
+			        </li>
+			        <li>
+			            <span class="fl">지방소득세 <img src="//www.saraminimage.co.kr/guide/job_help/calculator_tip.gif" alt="도움말" onmouseover="showTip(this, 'calcHelp9');this.style.cursor='hand';return true;" onmouseout="hideTip('calcHelp9');"></span>
+			            <span class="fr"><input type="text" class="receipt_textbox_01" name="residence_tax" readonly=""> 원</span>
+			        </li>
+			        <li>
+			            <span class="fl">공제액 합계</span>
+			            <span class="fr"><input type="text" class="receipt_textbox_01" name="total_tax_deduction" readonly=""> 원</span>
+			        </li>
+			        <li class="bg">
+			            <span class="fl" style="padding-bottom:4px;"><span class="sum">예상 실수령액(월)</span> <img src="//www.saraminimage.co.kr/guide/job_help/calculator_tip.gif" alt="도움말" onmouseover="showTip(this, 'calcHelp10');this.style.cursor='hand';return true;" onmouseout="hideTip('calcHelp10');"></span>
+			            <span class="fr"><input type="text" class="receipt_textbox_02" name="after_tax_income" readonly=""> 원</span>
+			        </li>
+			       </ul>
+			      </td>
+			     </tr>
+			    </tbody></table>
+			</form>
 
-		<!-- BASIC FORM ELELEMNTS -->
-		<div class="row mt">
-			<div class="col-lg-2"></div>
-			<div class="col-lg-8">
-					<h4 class="mb">
-						<i class="fa fa-angle-right"> result</i>
-					</h4>
-					<form class="form-horizontal style-form" method="get">
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">국민연금</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" readonly="readonly">
-							</div>
-							<label class="control-label">
-								원
-							</label>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">건강보험</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" readonly="readonly">
-							</div>
-							<label class="control-label">
-								원
-							</label>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">장기요양</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" readonly="readonly">
-							</div>
-							<label class="control-label">
-								원
-							</label>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">고용보험</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" readonly="readonly">
-							</div>
-							<label class="control-label">
-								원
-							</label>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">소득세</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" readonly="readonly">
-							</div>
-							<label class="control-label">
-								원
-							</label>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">지방소득세</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" readonly="readonly">
-							</div>
-							<label class="control-label">
-								원
-							</label>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">공제액 합계</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" readonly="readonly">
-							</div>
-							<label class="control-label">
-								원
-							</label>
-						</div>
-						
-						<div class="form-group has-success">
-							<label class="col-sm-4 col-sm-4 control-label">예상 실수령액(월)</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" readonly="readonly">
-							</div>
-							<label class="control-label">
-								원
-							</label>
-						</div>
-						
-					</form>
-			</div>
-			<div class="col-lg-2"></div>
-		</div>
+
+
+
+
+
+
 	</div>
 </div>
 	
