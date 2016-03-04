@@ -45,9 +45,8 @@
 			<div class="row mt">
 				<div class="col-lg-2"></div>
 				<div class="col-lg-8">
-					<div class="form-panel">
 						<h4 class="mb">
-							<i class="fa fa-angle-right"></i> Form Elements
+							<i class="fa fa-angle-right"> salary calculator</i>
 						</h4>
 						<form class="form-horizontal style-form" method="get">
 							<div class="form-group">
@@ -98,11 +97,13 @@
 								<label class="col-sm-3 col-sm-3 control-label">비과세액</label>	
 								<div class="col-sm-4">
 									<input class="form-control" id="disabledInput" type="text" value="100,000" disabled="disabled">
+									<label class="checkbox-inline">
+										<input type="checkbox" id="inlineCheckbox1" value="option1">직접입력
+									</label>
 								</div>
 								
-								<label class="checkbox-inline">
-									<input type="checkbox" id="inlineCheckbox1" value="option1">직접입력
-								</label>
+                              
+							
 							</div>
 							
 							<div class="form-group">
@@ -126,15 +127,54 @@
 								</div>
 							</div>
 						</form>
-					</div>
 				</div>
 				<div class="col-lg-2"></div>
 			</div>
 			<!-- /row -->
 
-
-
+			<!-- BASIC FORM ELELEMNTS -->
+			<div class="row mt">
+				<div class="col-lg-2"></div>
+				<div class="col-lg-8">
+						<h4 class="mb">
+							<i class="fa fa-angle-right"> result</i>
+						</h4>
+						<form class="form-horizontal style-form" method="get">
+							 <div class="form-group has-success">
+                                  <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Input with success</label>
+                                  <div class="col-lg-10">
+                                      <input type="text" class="form-control" id="inputSuccess">
+                                  </div>
+                              </div>
+                              
+							<div class="form-group has-success">
+								<label class="col-sm-3 col-sm-3 control-label" for="inputSuccess">연봉</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control text-right" id="inputSuccess">
+								</div>
+								<label class="control-label">
+									원
+								</label>
+							</div>
+						</form>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
 			
+			
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 			<form name="inputFrm">
 			<table border="0" cellpadding="0" cellspacing="0" class="calculator">
 			     <tbody><tr>
