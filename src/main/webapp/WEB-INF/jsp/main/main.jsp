@@ -14,8 +14,8 @@
 	<div class="container">	
 	
 		<div class="jumbotron">
-			<h1>My First Bootstrap Page</h1>
-			<p>Resize this responsive page to see the effect!</p>
+			<h1>정규민, 김건, 장승일의 보금자리 입니다.</h1>
+			<p>혼자있고 싶으니까 나가주세요!</p>
 		</div>
 		
 		<div class="row">
