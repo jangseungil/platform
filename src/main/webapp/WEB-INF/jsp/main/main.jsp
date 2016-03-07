@@ -14,8 +14,8 @@
 	<div class="container">	
 	
 		<div class="jumbotron">
-			<h1>정규민, 김건, 장승일의 보금자리 입니다.</h1>
-			<p>혼자있고 싶으니까 나가주세요!</p>
+			<h1>fdjklafjklfds tjkafkfds fdsjkfdsjk sfdk</h1>
+			<p>imdmfdkfdjka fklfkl</p>
 		</div>
 		
 		<div class="row">

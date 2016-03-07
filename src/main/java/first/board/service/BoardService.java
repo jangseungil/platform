@@ -11,7 +11,7 @@ import first.board.vo.BoardVo;
 @Service
 public class BoardService {
 
-//	@Autowired
+	@Autowired
     private BoardDao boardDao;
      
 	public List<BoardVo> selectBoardList(BoardVo boardVo) throws Exception {
