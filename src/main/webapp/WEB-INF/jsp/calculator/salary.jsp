@@ -89,7 +89,7 @@
 						<div class="form-group">
 							<label class="col-sm-4 col-sm-4 control-label">연봉</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" placeholder="원" name="yearSalary" ng-model="yearSalary">
+								<input type="text" class="form-control text-right" placeholder="원" name="yearSalary" ng-model="yearSalary" maxlength="11">
 							</div>
 						</div>
 						
@@ -109,14 +109,7 @@
 						<div class="form-group">
 							<label class="col-sm-4 col-sm-4 control-label">부양가족수</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" placeholder="명(본인포함)">
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">20세이하 자녀수</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" placeholder="명">
+								<input type="text" class="form-control text-right" placeholder="명(본인포함)" name="noTaxManCnt" ng-model="noTaxManCnt">
 							</div>
 						</div>
 						
@@ -124,7 +117,7 @@
 							<div class="col-sm-4"></div>
 							<div class="col-sm-4">
 								<button type="button" class="btn btn-primary" ng-click="getSalary()">계산하기</button>
-								<button type="button" class="btn btn-default">다시하기</button>
+								<button type="button" class="btn btn-default" ng-click="reset()">다시하기</button>
 							</div>
 						</div>
 					</form>
@@ -172,28 +165,28 @@
 					<div class="form-group">
 						<label class="col-sm-4 col-sm-4 control-label">고용보험</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control text-right" readonly="readonly">
+							<input type="text" class="form-control text-right" readonly="readonly" ng-model="unemploymentInsurance">
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label class="col-sm-4 col-sm-4 control-label">소득세</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control text-right" readonly="readonly">
+							<input type="text" class="form-control text-right" readonly="readonly" ng-model="incomeTax">
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label class="col-sm-4 col-sm-4 control-label">지방소득세</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control text-right" readonly="readonly">
+							<input type="text" class="form-control text-right" readonly="readonly" ng-model="countryIncomeTax">
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label class="col-sm-4 col-sm-4 control-label">공제액 합계</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control text-right" readonly="readonly">
+							<input type="text" class="form-control text-right" readonly="readonly" ng-model="totalTaxAmount">
 						</div>
 					</div>
 					
@@ -217,25 +210,27 @@
 var app = angular.module("myApp", []);
 
 app.controller("myCtrl", function($scope, $http) {
-	$scope.taxAfterAmount = "0원";
-	$scope.yearSalary = "33000000";
-	$scope.noTax = "200000";
+	//$scope.yearSalary = "33000000";
+	$scope.noTax = "100000";
+	$scope.noTaxManCnt = "1";
 	
 	$scope.getSalary = function(link){		
 		var dataObj = {
-			yearSalary : $scope.yearSalary, //연봉
-			noTax : $scope.noTax //비과세액
+			yearSalary : unComma($scope.yearSalary) //연봉
+			, noTax : unComma($scope.noTax) //비과세액
+			, noTaxManCnt : unComma($scope.noTaxManCnt) //비과세액
 		};	
 	
 		var res = $http.post('/calculator/salary/get', dataObj);
 		res.success(function(data, status, headers, config) {
-			console.log(data);
 			$scope.taxBeforeAmount = data.taxBeforeAmount + "원";
 			$scope.nationalPension = data.nationalPension + "원";
 			$scope.healthInsurance = data.healthInsurance + "원";
 			$scope.longHealthInsurance = data.longHealthInsurance + "원";
-			
-			
+			$scope.unemploymentInsurance = data.unemploymentInsurance + "원";
+			$scope.incomeTax = data.incomeTax + "원";
+			$scope.countryIncomeTax = data.countryIncomeTax + "원";
+			$scope.totalTaxAmount = data.totalTaxAmount + "원";
 			$scope.taxAfterAmount = data.taxAfterAmount + "원";
 		});
 		res.error(function(data, status, headers, config) {
@@ -245,7 +240,71 @@ app.controller("myCtrl", function($scope, $http) {
 		$scope.taxAfterAmount='';
 	};
 	
+	$scope.reset = function(link){		
+		$scope.taxBeforeAmount = "0원";
+		$scope.nationalPension = "0원";
+		$scope.healthInsurance = "0원";
+		$scope.longHealthInsurance = "0원";
+		$scope.unemploymentInsurance = "0원";
+		$scope.incomeTax = "0원";
+		$scope.countryIncomeTax = "0원";
+		$scope.totalTaxAmount = "0원";
+		$scope.taxAfterAmount = "0원";
+	};
+	
+	$scope.reset();
+	
+	$scope.$watch("yearSalary", function(newValue, oldValue) {
+		$scope.yearSalary = addComma(unComma(newValue) + "원");
+	});
+	
+	$scope.$watch("taxBeforeAmount", function(newValue, oldValue) {
+		$scope.taxBeforeAmount = addComma(unComma(newValue) + "원");
+	});
+	
+	$scope.$watch("nationalPension", function(newValue, oldValue) {
+		$scope.nationalPension = addComma(unComma(newValue) + "원");
+	});
+	
+	$scope.$watch("healthInsurance", function(newValue, oldValue) {
+		$scope.healthInsurance = addComma(unComma(newValue) + "원");
+	});
+	
+	$scope.$watch("longHealthInsurance", function(newValue, oldValue) {
+		$scope.longHealthInsurance = addComma(unComma(newValue) + "원");
+	});
+	
+	$scope.$watch("unemploymentInsurance", function(newValue, oldValue) {
+		$scope.unemploymentInsurance = addComma(unComma(newValue) + "원");
+	});
+	
+	$scope.$watch("incomeTax", function(newValue, oldValue) {
+		$scope.incomeTax = addComma(unComma(newValue) + "원");
+	});
+	
+	$scope.$watch("countryIncomeTax", function(newValue, oldValue) {
+		$scope.countryIncomeTax = addComma(unComma(newValue) + "원");
+	});
+	
+	$scope.$watch("totalTaxAmount", function(newValue, oldValue) {
+		$scope.totalTaxAmount = addComma(unComma(newValue) + "원");
+	});
+	
+	$scope.$watch("taxAfterAmount", function(newValue, oldValue) {
+		$scope.taxAfterAmount = addComma(unComma(newValue) + "원");
+	});
+	
 });
+
+var addComma = function(str) {
+	str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+
+var unComma = function(str) {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
+}
 </script>
 
 </body>
