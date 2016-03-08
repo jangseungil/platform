@@ -12,27 +12,27 @@ public class SalaryService {
 	 */
 	private static double nationalPensionRate = 9.0 / 100;
 	
-	//2016³â±âÁØ 6.12ÇÁ·Î
+	//2016ë…„ê¸°ì¤€ 6.12í”„ë¡œ
 	private static double healthInsuranceRate = 6.12 / 100;
 
-	//2016³â±âÁØ 6.55ÇÁ·Î
+	//2016ë…„ê¸°ì¤€ 6.55í”„ë¡œ
 	private static double longHealthInsuranceRate = 6.55 / 100;
 	
 	
 	public void getSalary(SalaryVo salaryVo) {
-		//¼¼Àü¿ù±Ş(±âº»±Ş)
+		//ì„¸ì „ì›”ê¸‰(ê¸°ë³¸ê¸‰)
 		setTaxBeforeAmount(salaryVo);
 		
-		//±¹¹Î¿¬±İ Â÷°¨¾×
+		//êµ­ë¯¼ì—°ê¸ˆ ì°¨ê°ì•¡
 		setNationalPension(salaryVo);
 		
-		//°Ç°­º¸Çè Â÷°¨¾×
+		//ê±´ê°•ë³´í—˜ ì°¨ê°ì•¡
 		setHealthInsurance(salaryVo);
 		
-		//Àå±â¿ä¾çº¸Çè Â÷°¨¾×
+		//ì¥ê¸°ìš”ì–‘ë³´í—˜ ì°¨ê°ì•¡
 		setLongHealthInsurance(salaryVo);
 		
-		//¼¼ÈÄ¿ù±Ş
+		//ì„¸í›„ì›”ê¸‰
 		setTaxAfterAmount(salaryVo);
 	}
 
