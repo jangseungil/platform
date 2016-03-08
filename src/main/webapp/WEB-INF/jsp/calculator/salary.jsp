@@ -255,7 +255,7 @@ app.controller("myCtrl", function($scope, $http) {
 	$scope.reset();
 	
 	$scope.$watch("yearSalary", function(newValue, oldValue) {
-		$scope.yearSalary = addComma(unComma(newValue) + "원");
+		$scope.yearSalary = addComma(unComma(newValue));
 	});
 	
 	$scope.$watch("taxBeforeAmount", function(newValue, oldValue) {

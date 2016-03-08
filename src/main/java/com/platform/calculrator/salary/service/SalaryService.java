@@ -141,9 +141,6 @@ public class SalaryService {
 		if(taxBeforeAmount > 10000 && taxBeforeAmount <= 14000) {
 			
 			row = sheet.getRow(rows-1); //10000에 해당되는 row
-			System.out.println(getValueByRow(noTaxManCnt + 1, row));
-			System.out.println((taxBeforeAmount - 10000) * 0.98 * 0.35);
-			System.out.println((int)(taxBeforeAmount - 10000) * 0.98 * 0.35);
 			incomeTax = (int) (getValueByRow(noTaxManCnt + 1, row) + ((taxBeforeAmount - 10000) * 0.98 * 0.35 * 1000));
 		} else if (taxBeforeAmount > 14000) { //14000초과  (10,000,000원인 경우의 해당세액) + (1,372,000원)+ (14,000,000원을 초과하는 금액 중 98%를 곱한 금액의 38% 상당액) 										
 			row = sheet.getRow(rows-1); //10000에 해당되는 row
@@ -160,8 +157,6 @@ public class SalaryService {
 					for (columnindex = 0; columnindex <= cells; columnindex++) {
 						//월급여액 이상, 미만
 						if(taxBeforeAmount >= getValueByRow(0, row) && taxBeforeAmount < getValueByRow(1, row)) {
-							System.out.println(getValueByRow(0, row));
-							System.out.println(getValueByRow(1, row));
 							
 							//3번째 컬럼(공제대상가족수1) ~ 13번째걸럼(공제대상가족수11)
 							incomeTax = getValueByRow(noTaxManCnt + 1, row);
