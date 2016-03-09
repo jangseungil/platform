@@ -15,18 +15,46 @@ import com.platform.calculrator.salary.vo.SalaryVo;
 
 @Service
 public class SalaryService {
-	
-	//2016년기준 4.5%
+	/**
+	 * 2016년기준 4.5% 
+	 */
 	private static double nationalPensionRate = 4.5 / 100;
 	
-	//2016년기준 3.06%
+	/**
+	 * 2016년기준 3.06%
+	 */
 	private static double healthInsuranceRate = 3.06 / 100;
 
-	//2016년기준 6.55%
+	/**
+	 * 2016년기준 6.55%
+	 */
 	private static double longHealthInsuranceRate = 6.55 / 100;
 	
-	//2016년기준 0.65%
+	/**
+	 * 2016년기준 0.65%
+	 */
 	private static double unemploymentInsuranceRate = 0.65 / 100;
+	
+	/**
+	 * 국민연금산정 최소월급액
+	 */
+	private static int nationalPensionMin = 270000;
+	
+	/**
+	 * 국민연금산정 최고월급액
+	 */
+	private static int nationalPensionMax = 4210000;
+	
+	/**
+	 * 국민건강보험산정 최소월급액
+	 */
+	private static int healthInsuranceMin = 280000;
+	
+	/**
+	 * 국민건강보험산정 최고월급액
+	 */
+	private static int healthInsuranceMax = 78100000;
+
 	
 	
 	public void getSalary(SalaryVo salaryVo) {
@@ -77,7 +105,15 @@ public class SalaryService {
 	}
 
 	private void setHealthInsurance(SalaryVo salaryVo) {
-		salaryVo.setHealthInsurance(cutWon((int) (salaryVo.getTaxBeforeAmount() * healthInsuranceRate)));
+		int standardAmount = salaryVo.getTaxBeforeAmount();
+		
+		if(salaryVo.getTaxBeforeAmount() < healthInsuranceMin)	 {
+			standardAmount = healthInsuranceMin;
+		} else if(salaryVo.getTaxBeforeAmount() > healthInsuranceMax) {
+			standardAmount = healthInsuranceMax;
+		}
+		
+		salaryVo.setHealthInsurance(cutWon((int) (standardAmount * healthInsuranceRate)));
 	}
 
 	private void setTaxBeforeAmount(SalaryVo salaryVo) {
@@ -85,7 +121,15 @@ public class SalaryService {
 	}
 	
 	private void setNationalPension(SalaryVo salaryVo) {
-		salaryVo.setNationalPension(cutWon((int) (salaryVo.getTaxBeforeAmount() * nationalPensionRate)));
+		int standardAmount = salaryVo.getTaxBeforeAmount();
+		
+		if(salaryVo.getTaxBeforeAmount() < nationalPensionMin)	 {
+			standardAmount = nationalPensionMin;
+		} else if(salaryVo.getTaxBeforeAmount() > nationalPensionMax) {
+			standardAmount = nationalPensionMax;
+		}
+		
+		salaryVo.setNationalPension(cutWon((int) (standardAmount * nationalPensionRate)));
 	}
 	
 	private void setUnemploymentInsurance(SalaryVo salaryVo) {
@@ -146,7 +190,6 @@ public class SalaryService {
 		HSSFRow row = null;
 		//10000초과 14000이하 - > (10,000,000원인 경우의 해당 세액) + (10,000,000원을 초과하는 금액 중 98%를 곱한 금액의 35% 상당액)										
 		if(taxBeforeAmount > 10000 && taxBeforeAmount <= 14000) {
-			
 			row = sheet.getRow(rows-1); //10000에 해당되는 row
 			incomeTax = (int) (getValueByRow(noTaxManCnt + 1, row) + ((taxBeforeAmount - 10000) * 0.98 * 0.35 * 1000));
 		} else if (taxBeforeAmount > 14000) { //14000초과  (10,000,000원인 경우의 해당세액) + (1,372,000원)+ (14,000,000원을 초과하는 금액 중 98%를 곱한 금액의 38% 상당액) 										
@@ -174,10 +217,6 @@ public class SalaryService {
 				}
 			}
 		}
-		
-		
-		
-		
 		
 		try {
 			workbook.close();

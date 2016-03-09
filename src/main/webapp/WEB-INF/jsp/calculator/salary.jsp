@@ -45,82 +45,76 @@
 		<div class="row mt">
 			<div class="col-lg-2"></div>
 			<div class="col-lg-8">
-					<h4 class="mb">
-						<i class="fa fa-angle-right"> salary calculator</i>
-					</h4>
-					<form class="form-horizontal style-form" method="get">
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">연봉/월급 선택</label>
-							<div class="col-sm-4">
-								<div class="radio-inline">
-								  <label>
-							     	 <input type="radio" name="yearMonthRadios" id="optionsRadios1" value="option1" checked="checked">
-								     연봉
-								  </label>
-								</div>
-								<div class="radio-inline">
-								  <label>
-								    <input type="radio" name="yearMonthRadios" id="optionsRadios2" value="option2">
-								    월급
-								  </label>
-								</div>
+				<h4 class="mb">
+					<i class="fa fa-angle-right"> salary calculator</i>
+				</h4>
+				<form class="form-horizontal style-form" method="get">
+					<div class="form-group">
+						<label class="col-sm-4 col-sm-4 control-label">연봉/월급 선택</label>
+						<div class="col-sm-4">
+							<div class="radio-inline">
+							  <label>
+						     	 <input type="radio" name="yearMonthRadios" id="optionsRadios1" value="option1" checked="checked">
+							     연봉
+							  </label>
+							</div>
+							<div class="radio-inline">
+							  <label>
+							    <input type="radio" name="yearMonthRadios" id="optionsRadios2" value="option2">
+							    월급
+							  </label>
 							</div>
 						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">퇴직금</label>
-							<div class="col-sm-4">
-								<div class="radio-inline">
-								  <label>
-							     	 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked">
-								     별도
-								  </label>
-								</div>
-								<div class="radio-inline">
-								  <label>
-								    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-								     포함
-								  </label>
-								</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-4 col-sm-4 control-label">퇴직금</label>
+						<div class="col-sm-4">
+							<div class="radio-inline">
+							  <label>
+						     	 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked">
+							     별도
+							  </label>
+							</div>
+							<div class="radio-inline">
+							  <label>
+							    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							     포함
+							  </label>
 							</div>
 						</div>
-						
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">연봉</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" placeholder="원" name="yearSalary" ng-model="yearSalary" maxlength="11">
-							</div>
+					</div>
+					
+					
+					<div class="form-group">
+						<label class="col-sm-4 col-sm-4 control-label">연봉</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control text-right" placeholder="원" name="yearSalary" ng-model="yearSalary" maxlength="11">
 						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">비과세액</label>	
-							<div class="col-sm-4">
-								<input class="form-control text-right" id="disabledInput" type="text" readonly="readonly" name="noTax" ng-model="noTax">
-								<label class="checkbox-inline">
-									<input type="checkbox" id="inlineCheckbox1" value="option1">직접입력
-								</label>
-							</div>
-							
-                             
-						
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-4 col-sm-4 control-label">비과세액</label>	
+						<div class="col-sm-4">
+							<input class="form-control text-right" id="noTax" type="text" name="noTax" ng-model="noTax" maxlength="9" placeholder="원">
 						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 col-sm-4 control-label">부양가족수</label>
-							<div class="col-sm-4">
-								<input type="text" class="form-control text-right" placeholder="명(본인포함)" name="noTaxManCnt" ng-model="noTaxManCnt">
-							</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-4 col-sm-4 control-label">부양가족수(본인포함)</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control text-right" placeholder="명(본인포함)" name="noTaxManCnt" ng-model="noTaxManCnt" maxlength="2">
 						</div>
-						
-						<div class="form-group">
-							<div class="col-sm-4"></div>
-							<div class="col-sm-4">
-								<button type="button" class="btn btn-primary" ng-click="getSalary()">계산하기</button>
-								<button type="button" class="btn btn-default" ng-click="reset()">다시하기</button>
-							</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-4"></div>
+						<div class="col-sm-4">
+							<button type="button" class="btn btn-primary" ng-click="getSalary()">계산하기</button>
+							<button type="button" class="btn btn-default" ng-click="reset()">다시하기</button>
 						</div>
-					</form>
+					</div>
+				</form>
 			</div>
 			<div class="col-lg-2"></div>
 		</div>
@@ -211,8 +205,6 @@ var app = angular.module("myApp", []);
 
 app.controller("myCtrl", function($scope, $http) {
 	//$scope.yearSalary = "33000000";
-	$scope.noTax = "100000";
-	$scope.noTaxManCnt = "1";
 	
 	$scope.getSalary = function(link){		
 		var dataObj = {
@@ -243,7 +235,7 @@ app.controller("myCtrl", function($scope, $http) {
 	$scope.reset = function(link){	
 		//입력영역
 		$scope.yearSalary = "원";
-		$scope.noTax = "100000";
+		$scope.noTax = addComma("100000");
 		$scope.noTaxManCnt = "1";
 		
 		//출력영역
@@ -256,6 +248,9 @@ app.controller("myCtrl", function($scope, $http) {
 		$scope.countryIncomeTax = "0원";
 		$scope.totalTaxAmount = "0원";
 		$scope.taxAfterAmount = "0원";
+	};
+	
+	$scope.directInput = function(){	
 	};
 	
 	$scope.reset();

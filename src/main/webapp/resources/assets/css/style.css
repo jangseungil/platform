@@ -1292,6 +1292,21 @@ PANELS CONFIGURATIONS
 	color: white;
 }
 
+/* salary-pannel Panel*/
+.salary-pannel {
+	background: url(/images/salary.png) no-repeat center top;
+	text-align: center;
+	background-position: center center;
+}
+.salary-pannel i {
+	color: white;
+	margin-top: 35px;
+}
+.salary-pannel p {
+	margin: 5px;
+	color: white;
+}
+
 /* Product Panel */
 .product-panel {
 	background: #dadad2;

@@ -24,10 +24,7 @@
 					<h3>salary calculator</h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
 				</div>
-				<div class="twitter-panel pn" onclick="mainRouter.goSalary();">
-					<i class="fa fa-twitter fa-4x"></i>
-					<p>calculate your salary</p>
-					<p class="user">@Jang</p>
+				<div class="salary-pannel pn" onclick="mainRouter.goSalary();">
 				</div>
 			</div>
 
