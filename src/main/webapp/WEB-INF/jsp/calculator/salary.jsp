@@ -72,13 +72,13 @@
 						<div class="col-sm-4">
 							<div class="radio-inline">
 							  <label>
-						     	 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked">
+						     	 <input type="radio" name="outWorkDivison" id="optionsRadios1" value="separate" checked="checked" ng-model="outWorkDivison">
 							     별도
 							  </label>
 							</div>
 							<div class="radio-inline">
 							  <label>
-							    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							    <input type="radio" name="outWorkDivison" id="optionsRadios2" value="include" ng-model="outWorkDivison">
 							     포함
 							  </label>
 							</div>
@@ -211,6 +211,7 @@ app.controller("myCtrl", function($scope, $http) {
 			yearSalary : unComma($scope.yearSalary) //연봉
 			, noTax : unComma($scope.noTax) //비과세액
 			, noTaxManCnt : unComma($scope.noTaxManCnt) //비과세액
+			, outWorkDivison : $scope.outWorkDivison
 		};	
 	
 		var res = $http.post('/calculator/salary/get', dataObj);
@@ -237,6 +238,7 @@ app.controller("myCtrl", function($scope, $http) {
 		$scope.yearSalary = "원";
 		$scope.noTax = addComma("100000");
 		$scope.noTaxManCnt = "1";
+		$scope.outWorkDivison = "separate";
 		
 		//출력영역
 		$scope.taxBeforeAmount = "0원";

@@ -117,7 +117,12 @@ public class SalaryService {
 	}
 
 	private void setTaxBeforeAmount(SalaryVo salaryVo) {
-		salaryVo.setTaxBeforeAmount((salaryVo.getYearSalary() / 12) - salaryVo.getNoTax());
+		System.out.println(salaryVo.getOutWorkDivison());
+		if("include".equals(salaryVo.getOutWorkDivison())) {
+			salaryVo.setTaxBeforeAmount((salaryVo.getYearSalary() / 13) - salaryVo.getNoTax());
+		} else {
+			salaryVo.setTaxBeforeAmount((salaryVo.getYearSalary() / 12) - salaryVo.getNoTax());
+		}
 	}
 	
 	private void setNationalPension(SalaryVo salaryVo) {

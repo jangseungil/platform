@@ -26,6 +26,8 @@ public class SalaryVo {
 	
 	private int noTaxManCnt;
 	
+	private String outWorkDivison;
+	
 	public SalaryVo() {
 		
 	}
@@ -125,5 +127,13 @@ public class SalaryVo {
 
 	public void setNoTaxManCnt(int noTaxManCnt) {
 		this.noTaxManCnt = noTaxManCnt;
+	}
+
+	public String getOutWorkDivison() {
+		return outWorkDivison;
+	}
+
+	public void setOutWorkDivison(String outWorkDivison) {
+		this.outWorkDivison = outWorkDivison;
 	}
 }
