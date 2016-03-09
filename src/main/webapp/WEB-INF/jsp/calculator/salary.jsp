@@ -240,7 +240,13 @@ app.controller("myCtrl", function($scope, $http) {
 		$scope.taxAfterAmount='';
 	};
 	
-	$scope.reset = function(link){		
+	$scope.reset = function(link){	
+		//입력영역
+		$scope.yearSalary = "원";
+		$scope.noTax = "100000";
+		$scope.noTaxManCnt = "1";
+		
+		//출력영역
 		$scope.taxBeforeAmount = "0원";
 		$scope.nationalPension = "0원";
 		$scope.healthInsurance = "0원";

@@ -1,5 +1,6 @@
 package com.platform.calculrator.salary.service;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -45,7 +46,9 @@ public class SalaryService {
 		setUnemploymentInsurance(salaryVo);
 
 		//소득세
-		salaryVo.setIncomeTax(cutWon(getIncomeTax(salaryVo.getTaxBeforeAmount(), salaryVo.getNoTaxManCnt())));
+		ClassLoader classLoader = getClass().getClassLoader();
+		File file = new File(classLoader.getResource("excel/근로소득_간이세액표(조견표).xls").getFile());
+		salaryVo.setIncomeTax(cutWon(getIncomeTax(salaryVo.getTaxBeforeAmount(), salaryVo.getNoTaxManCnt(), file)));
 		
 		//지방소득세 (소득세의 10%)
 		salaryVo.setCountryIncomeTax(cutWon(salaryVo.getIncomeTax() * 10 / 100));
@@ -55,6 +58,8 @@ public class SalaryService {
 		
 		//세후월급
 		setTaxAfterAmount(salaryVo);
+		
+		
 		
 	}
 
@@ -95,6 +100,7 @@ public class SalaryService {
 				- salaryVo.getUnemploymentInsurance()
 				- salaryVo.getIncomeTax()
 				- salaryVo.getCountryIncomeTax()
+				+ salaryVo.getNoTax()
 		);
 	}
 	
@@ -109,7 +115,8 @@ public class SalaryService {
 	}
 	
 	//근로간이세액표에 해당되는 소득세 가져오기
-	public static int getIncomeTax(int taxBeforeAmount, int noTaxManCnt) {
+	public static int getIncomeTax(int taxBeforeAmount, int noTaxManCnt, File excelFile) {
+	    
 		//간이세액표단위(천원), 연봉기준으로 바꿔줌
 		taxBeforeAmount = taxBeforeAmount/1000;
 		
@@ -117,7 +124,7 @@ public class SalaryService {
 		FileInputStream fis;
 		HSSFWorkbook workbook = null;
 		try {
-			fis = new FileInputStream("C:\\근로소득_간이세액표(조견표).xls");
+			fis = new FileInputStream(excelFile);
 			workbook = new HSSFWorkbook(fis);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
