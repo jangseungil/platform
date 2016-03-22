@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="first.board.dao.BoardDao">
-    <select id="selectBoardList" parameterType="first.board.vo.BoardVo" resultType="first.board.vo.BoardVo">
+    <select id="selectBoardList_deprecated" parameterType="first.board.vo.BoardVo" resultType="first.board.vo.BoardVo">
 		SELECT SEQ
 		     , PARENT_SEQ
 		     , TITLE

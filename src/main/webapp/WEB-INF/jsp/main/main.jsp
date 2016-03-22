@@ -12,59 +12,40 @@
 <body>
 
 	<div class="container">	
+		<div class="row">
 	
 		<div class="jumbotron">
 			<h1>fdjklafjklfds tjkafkfds fdsjkfdsjk sfdk</h1>
-			<p>imdmfdkfdjka fklfkl</p>
+			<p><a href="/board/boardList">게시판</a></p>
 		</div>
 		
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-sm-4 mb">
+			<div class="col-lg-4">
 				<div>
-					<h3>salary calculator</h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
 				</div>
-				<div class="salary-pannel pn" onclick="mainRouter.goSalary();">
+				
+				<div>
+					<img alt="aa" srcset="/images/sal_cal_1024.jpg 1024w, /images/sal_cal_640.jpg 640w, /images/sal_cal_320.jpg 320w" sizes="(min-width: 36em) 33.3vw, 100vw">
+				</div>
+			</div>
+		
+			<div class="col-lg-4">
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+				</div>
+				<div class="debt_pannel pn" onclick="mainRouter.goSalary();">
+				</div>
+			</div>
+		
+			<div class="col-lg-4">
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+				</div>
+				<div class="oil-pannel pn" onclick="mainRouter.goSalary();">
 				</div>
 			</div>
 
-			<! -- Blog Panel -->
-			<div class="col-lg-4 col-md-4 col-sm-4 mb">
-				<div>
-					<h3>debt calculator</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-				</div>
-				<div class="content-panel pn">
-					<div id="blog-bg">
-						<div class="blog-title">Incredible Title</div>
-					</div>
-					<div class="blog-text">
-						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting
-							industry. <a href="#">Read More</a>
-						</p>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="col-lg-4 col-md-4 col-sm-4 mb">
-				<div>
-					<h3>car oil rate calculator</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-				</div>
-				<div class="instagram-panel pn">
-					<i class="fa fa-instagram fa-4x"></i>
-					<p>
-						@THISISYOU<br /> 5 min. ago
-					</p>
-					<p>
-						<i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49
-					</p>
-				</div>
-			</div>
 		</div>
-
 	</div>
 	<form name="board" action="/board/boardList">
 	<input type="hidden" id="pageNo" name="pageNo"/>

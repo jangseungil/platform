@@ -1292,20 +1292,6 @@ PANELS CONFIGURATIONS
 	color: white;
 }
 
-/* salary-pannel Panel*/
-.salary-pannel {
-	background: url(/images/salary.png) no-repeat center top;
-	text-align: center;
-	background-position: center center;
-}
-.salary-pannel i {
-	color: white;
-	margin-top: 35px;
-}
-.salary-pannel p {
-	margin: 5px;
-	color: white;
-}
 
 /* Product Panel */
 .product-panel {
@@ -2262,3 +2248,45 @@ label {
 }
 
 
+
+/* salary-pannel Panel*/
+.salary-pannel {
+	background: url(/images/sal_cal.jpg) no-repeat center center fixed;
+	 -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+}
+
+.salary-pannel p {
+	margin: 5px;
+	color: white;
+}
+
+/* debt-pannel Panel*/
+.debt-pannel {
+	background: url(/images/debt_cal.jpg) no-repeat center center fixed;
+	 -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+}
+
+.debt-pannel p {
+	margin: 5px;
+	color: white;
+}
+
+/* oil-pannel Panel*/
+.oil-pannel {
+	background: url(/images/oil_cal.jpg) no-repeat center center fixed;
+	 -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+}
+
+.oil-pannel p {
+	margin: 5px;
+	color: white;
+}
