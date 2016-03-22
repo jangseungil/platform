@@ -18,7 +18,7 @@
 			<div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
 		</div>
 		<!--logo start-->
-		<a href="/" class="logo"><b></b></a>
+		<a href="/" class="logo"><b>Home</b></a>
 		<!--logo end-->
 		<div class="nav notify-row" id="top_menu">
 			<!--  notification start -->
@@ -84,13 +84,9 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="col-sm-4 col-sm-4 control-label" for="noTaxManCnt">부양가족수(본인포함)</label>
+						<label class="col-sm-4 col-sm-4 control-label">부양가족수(본인포함)</label>
 						<div class="col-sm-4">
-							<select id="noTaxManCnt" name="noTaxManCnt" ng-model="noTaxManCnt">
-								<option ng-repeat="operator in [1..12]" value="{{operator}}">
-							    	{{operator}}
-							    </option>
-							</select>
+							<input type="text" class="form-control text-right" placeholder="명(본인포함)" name="noTaxManCnt" ng-model="noTaxManCnt" maxlength="2">
 						</div>
 					</div>
 					
