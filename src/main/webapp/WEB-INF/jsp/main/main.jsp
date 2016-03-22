@@ -15,7 +15,7 @@
 	
 		<div class="jumbotron">
 			<h1>fdjklafjklfds tjkafkfds fdsjkfdsjk sfdk</h1>
-			<p>imdmfdkfdjka fklfkl</p>
+			<p><a href="/board/boardList">게시판</a></p>
 		</div>
 		
 		<div class="row">

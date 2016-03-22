@@ -19,7 +19,7 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
      
-    @RequestMapping(value="/board/boardList")
+    @RequestMapping(value="/board/boardList_deprecated")
     public String openSampleBoardList(HttpServletRequest request, BoardVo boardVo) throws Exception{
     	
     	List<BoardVo> boardList = boardService.selectBoardList(boardVo);

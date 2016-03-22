@@ -26,5 +26,5 @@
         <beans:constructor-arg index="0" ref="sqlSessionFactory"/>
     </beans:bean>
      
-    <mybatis:scan base-package="first" />
+    <mybatis:scan base-package="com.platform" />
 </beans:beans>

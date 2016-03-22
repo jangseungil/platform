@@ -12,6 +12,7 @@ import first.board.vo.BoardVo;
 public class MainController {
     Logger log = Logger.getLogger(this.getClass());
     
+    
     @RequestMapping(value="/")
     public String mainList(HttpServletRequest request, BoardVo boardVo) throws Exception{
     	

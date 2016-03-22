@@ -8,8 +8,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class LoggerInterceptor extends HandlerInterceptorAdapter {
-	protected Log logger = LogFactory.getLog(LoggerInterceptor.class);
+public class LoggerInterceptor_deprecated extends HandlerInterceptorAdapter {
+	protected Log logger = LogFactory.getLog(LoggerInterceptor_deprecated.class);
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
