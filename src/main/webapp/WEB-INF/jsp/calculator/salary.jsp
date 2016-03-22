@@ -18,7 +18,7 @@
 			<div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
 		</div>
 		<!--logo start-->
-		<a href="/" class="logo"><b>DASHGUM FREE</b></a>
+		<a href="/" class="logo"><b></b></a>
 		<!--logo end-->
 		<div class="nav notify-row" id="top_menu">
 			<!--  notification start -->
@@ -32,11 +32,13 @@
 			</ul>
 			<!--  notification end -->
 		</div>
+		<!-- 
 		<div class="top-menu">
 			<ul class="nav pull-right top-menu">
 				<li><a class="logout" href="login.html">Logout</a></li>
 			</ul>
 		</div>
+		 -->
 	</header>
 	<!--header end-->
 	
@@ -46,38 +48,19 @@
 			<div class="col-lg-2"></div>
 			<div class="col-lg-8">
 				<h4 class="mb">
-					<i class="fa fa-angle-right"> salary calculator</i>
 				</h4>
 				<form class="form-horizontal style-form" method="get">
-					<div class="form-group">
-						<label class="col-sm-4 col-sm-4 control-label">연봉/월급 선택</label>
-						<div class="col-sm-4">
-							<div class="radio-inline">
-							  <label>
-						     	 <input type="radio" name="yearMonthRadios" id="optionsRadios1" value="option1" checked="checked">
-							     연봉
-							  </label>
-							</div>
-							<div class="radio-inline">
-							  <label>
-							    <input type="radio" name="yearMonthRadios" id="optionsRadios2" value="option2">
-							    월급
-							  </label>
-							</div>
-						</div>
-					</div>
-					
 					<div class="form-group">
 						<label class="col-sm-4 col-sm-4 control-label">퇴직금</label>
 						<div class="col-sm-4">
 							<div class="radio-inline">
-							  <label>
+							  <label for="optionsRadios1">
 						     	 <input type="radio" name="outWorkDivison" id="optionsRadios1" value="separate" checked="checked" ng-model="outWorkDivison">
 							     별도
 							  </label>
 							</div>
 							<div class="radio-inline">
-							  <label>
+							  <label for="optionsRadios2">
 							    <input type="radio" name="outWorkDivison" id="optionsRadios2" value="include" ng-model="outWorkDivison">
 							     포함
 							  </label>
@@ -87,31 +70,35 @@
 					
 					
 					<div class="form-group">
-						<label class="col-sm-4 col-sm-4 control-label">연봉</label>
+						<label class="col-sm-4 col-sm-4 control-label" for="yearSalary">연봉</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control text-right" placeholder="원" name="yearSalary" ng-model="yearSalary" maxlength="11">
+							<input type="text" class="form-control text-right" id="yearSalary" name="yearSalary" ng-model="yearSalary" maxlength="11" placeholder="원" r>
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="col-sm-4 col-sm-4 control-label">비과세액</label>	
+						<label class="col-sm-4 col-sm-4 control-label" for="noTax">비과세액</label>	
 						<div class="col-sm-4">
 							<input class="form-control text-right" id="noTax" type="text" name="noTax" ng-model="noTax" maxlength="9" placeholder="원">
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label class="col-sm-4 col-sm-4 control-label">부양가족수(본인포함)</label>
+						<label class="col-sm-4 col-sm-4 control-label" for="noTaxManCnt">부양가족수(본인포함)</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control text-right" placeholder="명(본인포함)" name="noTaxManCnt" ng-model="noTaxManCnt" maxlength="2">
+							<select id="noTaxManCnt" name="noTaxManCnt" ng-model="noTaxManCnt">
+								<option ng-repeat="operator in [1..12]" value="{{operator}}">
+							    	{{operator}}
+							    </option>
+							</select>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<div class="col-sm-4"></div>
 						<div class="col-sm-4">
-							<button type="button" class="btn btn-primary" ng-click="getSalary()">계산하기</button>
-							<button type="button" class="btn btn-default" ng-click="reset()">다시하기</button>
+							<button type="button" class="btn btn-primary btn-lg" ng-click="getSalary()">계산하기</button>
+							<button type="button" class="btn btn-default btn-lg" ng-click="reset()">다시하기</button>
 						</div>
 					</div>
 				</form>
@@ -204,9 +191,7 @@
 var app = angular.module("myApp", []);
 
 app.controller("myCtrl", function($scope, $http) {
-	//$scope.yearSalary = "33000000";
-	
-	$scope.getSalary = function(link){		
+	$scope.getSalary = function(){		
 		var dataObj = {
 			yearSalary : unComma($scope.yearSalary) //연봉
 			, noTax : unComma($scope.noTax) //비과세액
@@ -233,7 +218,7 @@ app.controller("myCtrl", function($scope, $http) {
 		$scope.taxAfterAmount='';
 	};
 	
-	$scope.reset = function(link){	
+	$scope.reset = function(){	
 		//입력영역
 		$scope.yearSalary = "원";
 		$scope.noTax = addComma("100000");
@@ -250,9 +235,6 @@ app.controller("myCtrl", function($scope, $http) {
 		$scope.countryIncomeTax = "0원";
 		$scope.totalTaxAmount = "0원";
 		$scope.taxAfterAmount = "0원";
-	};
-	
-	$scope.directInput = function(){	
 	};
 	
 	$scope.reset();
