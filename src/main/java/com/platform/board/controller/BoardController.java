@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,8 @@ public class BoardController {
 	@RequestMapping(value="/board/boardList")
 	public ModelAndView openBoardList(Map<String,Object> commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView("/board/boardList");
-		//System.out.println("= "+ log.isDebugEnabled() +" =");
+		System.out.println("= "+ log.getLevel() +" =");
+		log.setLevel(Level.DEBUG);
 		log.debug("인터셉터 테스트");
 		
 		List<Map<String,Object>> list = boardService.selectBoardList(commandMap);

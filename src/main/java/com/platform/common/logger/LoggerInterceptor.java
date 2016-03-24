@@ -16,7 +16,8 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		// 원래 이거 없어도 되야하는데....안되서 어쩔 수 없이(?) setLevel()함. 이래야 Log log가 잘 되더라.. 
+		// 원래 이거 없어도 되야하는데....안되서 어쩔 수 없이(?) setLevel()함. 
+		System.out.println(log.isDebugEnabled());
 	    logger.setLevel(Level.DEBUG);
 		
 		if (log.isDebugEnabled()) {
