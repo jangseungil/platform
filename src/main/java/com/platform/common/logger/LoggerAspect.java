@@ -18,8 +18,7 @@ public class LoggerAspect {
      
     @Around("execution(* com.platform..controller.*Controller.*(..)) or execution(* com.platform..service.*Impl.*(..)) or execution(* com.platform..dao.*DAO.*(..))")
     public Object logPrint(ProceedingJoinPoint joinPoint) throws Throwable {
-    	logger.setLevel(Level.DEBUG);
-    	
+    
         type = joinPoint.getSignature().getDeclaringTypeName();
          
         if (type.indexOf("Controller") > -1) {

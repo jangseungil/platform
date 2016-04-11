@@ -16,7 +16,7 @@
     </appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.platform" additivity="true">
+	<logger name="com.platform" additivity="false">
 		<level value="debug" />
 		<appender-ref ref="console"/>
 	</logger>
