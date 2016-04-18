@@ -18,7 +18,8 @@ public class LoggerAspect {
      
     @Around("execution(* com.platform..controller.*Controller.*(..)) or execution(* com.platform..service.*Impl.*(..)) or execution(* com.platform..dao.*DAO.*(..))")
     public Object logPrint(ProceedingJoinPoint joinPoint) throws Throwable {
-    
+    	logger.setLevel(Level.DEBUG);
+    	
         type = joinPoint.getSignature().getDeclaringTypeName();
          
         if (type.indexOf("Controller") > -1) {
@@ -30,9 +31,9 @@ public class LoggerAspect {
         else if (type.indexOf("DAO") > -1) {
             name = "DAO  \t\t:  ";
         }
-        System.out.println(log.isDebugEnabled()+" )))))))");
-        log.debug(">>>> ");
+        
         log.debug(name + type + "." + joinPoint.getSignature().getName() + "()");
+        
         return joinPoint.proceed();
     }
 }

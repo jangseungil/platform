@@ -12,10 +12,14 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class LoggerInterceptor extends HandlerInterceptorAdapter {
 	protected Log log = LogFactory.getLog(LoggerInterceptor.class);
+	protected static Logger logger = Logger.getLogger(LoggerInterceptor.class.getName());
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		// 원래 이거 없어도 되야하는데....안되서 어쩔 수 없이(?) setLevel()함. 
+		// 원래 이거 없어도 되야하는데....안되서 어쩔 수 없이(?) setLevel()함.
+		System.out.println("platform log.isDebugEnabled() => " + log.isDebugEnabled());
+		logger.setLevel(Level.DEBUG);
+		
 		if (log.isDebugEnabled()) {
 			log.debug("======================================          START         ======================================");
 			log.debug(" Request URI \t:  " + request.getRequestURI());
