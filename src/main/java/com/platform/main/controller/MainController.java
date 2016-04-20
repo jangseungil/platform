@@ -16,7 +16,7 @@ public class MainController {
     @RequestMapping(value="/")
     public String mainList(HttpServletRequest request, BoardVo boardVo) throws Exception{
     	
-        return "/main/main";
+        return "/main/main2";
     }
  
 }
