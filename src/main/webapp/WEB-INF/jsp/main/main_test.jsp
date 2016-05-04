@@ -3,6 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="util" uri="http://www.platform.co.kr" %>
 <!DOCTYPE html>
+<jsp:include page="/WEB-INF/jsp/common/common.jsp"/>
 <html lang="ko">
   <head>
     <meta charset="utf-8">
@@ -90,8 +91,14 @@
       </footer>
     </div> <!-- /container -->
 
-	<!-- JQuery, Bootstrap 등 모두 include-body.jspf에 있음. (body마지막에 놔야 로딩 빠름) -->
-    <%@ include file="/WEB-INF/include/include-body.jspf" %>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>  -->
     
     <script src="<c:url value='/js/common/common.js'/>" charset="utf-8"></script>
     
